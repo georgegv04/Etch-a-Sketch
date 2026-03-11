@@ -7,10 +7,11 @@
 
 #project-title {
   font-family: "Cabin Sketch", cursive;
-  font-size: 72px;
+  font-size: 50px;
   text-align: center;
   letter-spacing: 2px;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
 }
 
 body {
@@ -18,18 +19,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-  height: 100vh;
+  gap: 30px;
 }
 
 .container {
+  width: 640px;
   display: flex;
   flex-wrap: wrap;
-  width: 960px;
+  /* margin-bottom: 60px; */
 }
 
 .square {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
 }
