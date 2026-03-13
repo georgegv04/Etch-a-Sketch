@@ -1,5 +1,5 @@
 function getGridSize() {
-  let size = prompt("Insert a grid size");
+  let size = Number(prompt("Insert a grid size"));
   return size;
 }
 
@@ -8,9 +8,13 @@ function generateRandomColor() {
   let color = "#";
 
   for (let j = 0; j < 6; j++) {
-    color += symbols[Math.floor(Math.random() * symbols.length)];
+    color += symbols[Math.floor(Math.random() * 16)];
   }
   return color;
+}
+
+function blackColor() {
+  return "#262626";
 }
 
 function createGrid(size) {
@@ -28,7 +32,7 @@ function createGrid(size) {
     gridSquare.style.height = `${squareSize}px`;
 
     gridSquare.addEventListener("mouseenter", function () {
-      gridSquare.style.backgroundColor = generateRandomColor();
+      gridSquare.style.backgroundColor = blackColor();
     });
     container.appendChild(gridSquare);
   }
