@@ -4,6 +4,9 @@ function createNewGrid() {
   let btn = document.querySelector(".grid-size-picker");
   btn.addEventListener("click", function () {
     let userInput = Number(prompt("Insert a grid size"));
+    while (userInput > 100 || userInput < 2) {
+      userInput = Number(prompt("Grid size must be a value between 2 and 100"));
+    }
     createGrid(userInput);
   });
 }
@@ -34,7 +37,7 @@ function createGrid(size) {
     gridSquare.style.width = `${squareSize}px`;
     gridSquare.style.height = `${squareSize}px`;
 
-    gridSquare.addEventListener("mouseenter", function () {
+    gridSquare.addEventListener("mouseover", function () {
       gridSquare.style.backgroundColor = generateRandomColor();
     });
     container.appendChild(gridSquare);

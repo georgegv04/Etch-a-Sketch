@@ -48,8 +48,10 @@ body {
 .rainbow-btn {
   color: white;
   background-color: #262626;
-  padding: 12px 24px;
+  padding: 6px 20px;
   border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .btn-section {
