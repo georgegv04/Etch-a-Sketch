@@ -18,7 +18,7 @@ function createGrid(size) {
 
   container.innerHTML = ""; // Clear Previous Grid
 
-  const squareSize = 640 / size;
+  const squareSize = 600 / size;
 
   for (let i = 0; i < size * size; i++) {
     const gridSquare = document.createElement("div");

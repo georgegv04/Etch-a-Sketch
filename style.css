@@ -23,8 +23,8 @@ body {
 }
 
 .container {
-  height: 640px;
-  width: 640px;
+  height: 600px;
+  width: 600px;
   display: flex;
   flex-wrap: wrap;
 }
