@@ -16,13 +16,21 @@
 body {
   background-color: aliceblue;
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.main-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
 }
 
-.container {
+.grid {
   height: 600px;
   width: 600px;
   display: flex;
@@ -33,4 +41,11 @@ body {
   width: 40px;
   height: 40px;
   border: 1px solid black;
+}
+
+.grid-size-picker {
+  color: white;
+  background-color: #262626;
+  padding: 12px 24px;
+  border-radius: 8px;
 }

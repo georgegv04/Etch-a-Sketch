@@ -1,10 +1,15 @@
-function getGridSize() {
-  let size = Number(prompt("Insert a grid size"));
-  return size;
+const container = document.querySelector(".grid");
+
+function createNewGrid() {
+  let btn = document.querySelector(".grid-size-picker");
+  btn.addEventListener("click", function () {
+    let userInput = Number(prompt("Insert a grid size"));
+    createGrid(userInput);
+  });
 }
 
 function generateRandomColor() {
-  let symbols = "0123456789ABCDEF";
+  const symbols = "0123456789ABCDEF";
   let color = "#";
 
   for (let j = 0; j < 6; j++) {
@@ -18,8 +23,6 @@ function blackColor() {
 }
 
 function createGrid(size) {
-  const container = document.querySelector(".container");
-
   container.innerHTML = ""; // Clear Previous Grid
 
   const squareSize = 600 / size;
@@ -37,6 +40,5 @@ function createGrid(size) {
     container.appendChild(gridSquare);
   }
 }
-
-size = getGridSize();
-createGrid(size);
+createGrid(16);
+createNewGrid();
