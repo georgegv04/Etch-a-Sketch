@@ -4,7 +4,7 @@ function createNewGrid() {
   let btn = document.querySelector(".grid-size-picker");
   btn.addEventListener("click", function () {
     let userInput = Number(prompt("Insert a grid size between 2-100"));
-    while (userInput > 100 || userInput < 2) {
+    while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
       userInput = Number(prompt("Grid size must be a value between 2 and 100"));
     }
     createGrid(userInput);
