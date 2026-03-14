@@ -38,7 +38,7 @@ function createGrid(size) {
     gridSquare.style.height = `${squareSize}px`;
 
     gridSquare.addEventListener("mouseover", function () {
-      gridSquare.style.backgroundColor = blackColor();
+      gridSquare.style.backgroundColor = generateRandomColor();
     });
     container.appendChild(gridSquare);
   }
