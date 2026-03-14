@@ -1,5 +1,7 @@
+// Select the grid container
 const container = document.querySelector(".grid");
 
+// Change square color when hovering
 container.addEventListener("mouseover", (event) => {
   if (event.target.classList.contains("square")) {
     if (currentMode === "rainbow") {
@@ -10,6 +12,7 @@ container.addEventListener("mouseover", (event) => {
   }
 });
 
+// Clear all colored squares
 const clearGrid = document.querySelector(".clear-grid");
 
 clearGrid.addEventListener("click", () => {
@@ -19,18 +22,22 @@ clearGrid.addEventListener("click", () => {
   }
 });
 
+// Current drawing mode
 let currentMode = "rainbow";
 
+// Switch to rainbow mode
 const rainbowBtn = document.querySelector(".rainbow-btn");
 rainbowBtn.addEventListener("click", () => {
   currentMode = "rainbow";
 });
 
+// Switch to black mode
 const blackBtn = document.querySelector(".black-btn");
 blackBtn.addEventListener("click", () => {
   currentMode = "black";
 });
 
+// Generate a random hex color
 function generateRandomColor() {
   const symbols = "0123456789ABCDEF";
   let color = "#";
@@ -41,6 +48,7 @@ function generateRandomColor() {
   return color;
 }
 
+// Create a grid with size × size squares
 function createGrid(size) {
   container.innerHTML = ""; // Clear Previous Grid
 
@@ -57,13 +65,18 @@ function createGrid(size) {
   }
 }
 
+// Button for selecting grid size
 const gridBtn = document.querySelector(".grid-size-picker");
 gridBtn.addEventListener("click", () => {
   let userInput = Number(prompt("Insert a grid size between 2 and 100"));
+
+  // Validate user input
   while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
     userInput = Number(prompt("Please enter a number between 2 and 100"));
   }
+
   createGrid(userInput);
 });
 
+// Create default 16x16 grid on page load
 createGrid(16);
