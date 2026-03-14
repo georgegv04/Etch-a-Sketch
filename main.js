@@ -1,15 +1,10 @@
 const container = document.querySelector(".grid");
 
-function createNewGrid() {
-  let btn = document.querySelector(".grid-size-picker");
-  btn.addEventListener("click", function () {
-    let userInput = Number(prompt("Insert a grid size between 2-100"));
-    while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
-      userInput = Number(prompt("Grid size must be a value between 2 and 100"));
-    }
-    createGrid(userInput);
-  });
-}
+container.addEventListener("mouseover", function (event) {
+  if (event.target.classList.contains("square")) {
+    event.target.style.backgroundColor = blackColor();
+  }
+});
 
 function generateRandomColor() {
   const symbols = "0123456789ABCDEF";
@@ -37,11 +32,20 @@ function createGrid(size) {
     gridSquare.style.width = `${squareSize}px`;
     gridSquare.style.height = `${squareSize}px`;
 
-    gridSquare.addEventListener("mouseover", function () {
-      gridSquare.style.backgroundColor = generateRandomColor();
-    });
     container.appendChild(gridSquare);
   }
 }
+
+function createNewGrid() {
+  let btn = document.querySelector(".grid-size-picker");
+  btn.addEventListener("click", function () {
+    let userInput = Number(prompt("Insert a grid size between 2-100"));
+    while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
+      userInput = Number(prompt("Grid size must be a value between 2 and 100"));
+    }
+    createGrid(userInput);
+  });
+}
+
 createGrid(16);
 createNewGrid();
