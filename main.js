@@ -2,7 +2,16 @@ const container = document.querySelector(".grid");
 
 container.addEventListener("mouseover", function (event) {
   if (event.target.classList.contains("square")) {
-    event.target.style.backgroundColor = blackColor();
+    event.target.style.backgroundColor = generateRandomColor();
+  }
+});
+
+const clearGrid = document.querySelector(".clear-grid");
+
+clearGrid.addEventListener("click", function () {
+  const squares = document.querySelectorAll(".square");
+  for (let square of squares) {
+    square.style.backgroundColor = "white";
   }
 });
 
