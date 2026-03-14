@@ -2,7 +2,11 @@ const container = document.querySelector(".grid");
 
 container.addEventListener("mouseover", function (event) {
   if (event.target.classList.contains("square")) {
-    event.target.style.backgroundColor = generateRandomColor();
+    if (currentMode === "rainbow") {
+      event.target.style.backgroundColor = generateRandomColor();
+    } else if (currentMode === "black") {
+      event.target.style.backgroundColor = blackColor();
+    }
   }
 });
 
@@ -11,8 +15,20 @@ const clearGrid = document.querySelector(".clear-grid");
 clearGrid.addEventListener("click", function () {
   const squares = document.querySelectorAll(".square");
   for (let square of squares) {
-    square.style.backgroundColor = "white";
+    square.style.backgroundColor = "";
   }
+});
+
+currentMode = "rainbow";
+
+let rainbowBtn = document.querySelector(".rainbow-btn");
+rainbowBtn.addEventListener("click", function () {
+  currentMode = "rainbow";
+});
+
+let blackBtn = document.querySelector(".black-btn");
+blackBtn.addEventListener("click", function () {
+  currentMode = "black";
 });
 
 function generateRandomColor() {
