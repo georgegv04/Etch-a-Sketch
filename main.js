@@ -1,33 +1,33 @@
 const container = document.querySelector(".grid");
 
-container.addEventListener("mouseover", function (event) {
+container.addEventListener("mouseover", (event) => {
   if (event.target.classList.contains("square")) {
     if (currentMode === "rainbow") {
       event.target.style.backgroundColor = generateRandomColor();
     } else if (currentMode === "black") {
-      event.target.style.backgroundColor = blackColor();
+      event.target.style.backgroundColor = "#262626";
     }
   }
 });
 
 const clearGrid = document.querySelector(".clear-grid");
 
-clearGrid.addEventListener("click", function () {
+clearGrid.addEventListener("click", () => {
   const squares = document.querySelectorAll(".square");
   for (let square of squares) {
     square.style.backgroundColor = "";
   }
 });
 
-currentMode = "rainbow";
+let currentMode = "rainbow";
 
-let rainbowBtn = document.querySelector(".rainbow-btn");
-rainbowBtn.addEventListener("click", function () {
+const rainbowBtn = document.querySelector(".rainbow-btn");
+rainbowBtn.addEventListener("click", () => {
   currentMode = "rainbow";
 });
 
-let blackBtn = document.querySelector(".black-btn");
-blackBtn.addEventListener("click", function () {
+const blackBtn = document.querySelector(".black-btn");
+blackBtn.addEventListener("click", () => {
   currentMode = "black";
 });
 
@@ -41,14 +41,10 @@ function generateRandomColor() {
   return color;
 }
 
-function blackColor() {
-  return "#262626";
-}
-
 function createGrid(size) {
   container.innerHTML = ""; // Clear Previous Grid
 
-  const squareSize = 600 / size;
+  const squareSize = container.clientWidth / size;
 
   for (let i = 0; i < size * size; i++) {
     const gridSquare = document.createElement("div");
@@ -61,16 +57,13 @@ function createGrid(size) {
   }
 }
 
-function createNewGrid() {
-  let btn = document.querySelector(".grid-size-picker");
-  btn.addEventListener("click", function () {
-    let userInput = Number(prompt("Insert a grid size between 2-100"));
-    while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
-      userInput = Number(prompt("Grid size must be a value between 2 and 100"));
-    }
-    createGrid(userInput);
-  });
-}
+const gridBtn = document.querySelector(".grid-size-picker");
+gridBtn.addEventListener("click", () => {
+  let userInput = Number(prompt("Insert a grid size between 2 and 100"));
+  while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
+    userInput = Number(prompt("Please enter a number between 2 and 100"));
+  }
+  createGrid(userInput);
+});
 
 createGrid(16);
-createNewGrid();
