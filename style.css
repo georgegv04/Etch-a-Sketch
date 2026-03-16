@@ -39,6 +39,7 @@ body {
 
 .square {
   border: 1px solid black;
+  cursor: grab;
 }
 
 .grid-size-picker,

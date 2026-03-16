@@ -1,41 +1,11 @@
 // Select the grid container
 const container = document.querySelector(".grid");
 
-// Change square color when hovering
-container.addEventListener("mouseover", (event) => {
-  if (event.target.classList.contains("square")) {
-    if (currentMode === "rainbow") {
-      event.target.style.backgroundColor = generateRandomColor();
-    } else if (currentMode === "black") {
-      event.target.style.backgroundColor = "#262626";
-    }
-  }
-});
-
-// Clear all colored squares
-const clearGrid = document.querySelector(".clear-grid");
-
-clearGrid.addEventListener("click", () => {
-  const squares = document.querySelectorAll(".square");
-  for (let square of squares) {
-    square.style.backgroundColor = "";
-  }
-});
+// Select the buttons section
+const buttonsSection = document.querySelector(".btn-section");
 
 // Current drawing mode
 let currentMode = "rainbow";
-
-// Switch to rainbow mode
-const rainbowBtn = document.querySelector(".rainbow-btn");
-rainbowBtn.addEventListener("click", () => {
-  currentMode = "rainbow";
-});
-
-// Switch to black mode
-const blackBtn = document.querySelector(".black-btn");
-blackBtn.addEventListener("click", () => {
-  currentMode = "black";
-});
 
 // Generate a random hex color
 function generateRandomColor() {
@@ -65,17 +35,53 @@ function createGrid(size) {
   }
 }
 
-// Button for selecting grid size
-const gridBtn = document.querySelector(".grid-size-picker");
-gridBtn.addEventListener("click", () => {
-  let userInput = Number(prompt("Insert a grid size between 2 and 100"));
-
-  // Validate user input
-  while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
-    userInput = Number(prompt("Please enter a number between 2 and 100"));
+// Change square color when hovering
+container.addEventListener("mouseover", (event) => {
+  if (event.target.classList.contains("square")) {
+    if (currentMode === "rainbow") {
+      event.target.style.backgroundColor = generateRandomColor();
+    } else if (currentMode === "black") {
+      event.target.style.backgroundColor = "#262626";
+    }
   }
+});
 
-  createGrid(userInput);
+// Single listener for all buttons (event delegation)
+buttonsSection.addEventListener("click", (e) => {
+  // The element that was clicked
+  const target = e.target;
+
+  // Decide which button was clicked
+  switch (target.className) {
+    case "grid-size-picker":
+      // Handle grid size selection
+      let userInput = Number(prompt("Insert a grid size between 2 and 100"));
+
+      while (userInput > 100 || userInput < 2 || isNaN(userInput)) {
+        userInput = Number(prompt("Please enter a number between 2 and 100"));
+      }
+
+      createGrid(userInput);
+      break;
+
+    case "black-btn":
+      // Activate black drawing mode
+      currentMode = "black";
+      break;
+
+    case "rainbow-btn":
+      // Activate rainbow drawing mode
+      currentMode = "rainbow";
+      break;
+
+    case "clear-grid":
+      // Clear the grid
+      const squares = document.querySelectorAll(".square");
+      for (let square of squares) {
+        square.style.backgroundColor = "";
+      }
+      break;
+  }
 });
 
 // Create default 16x16 grid on page load
